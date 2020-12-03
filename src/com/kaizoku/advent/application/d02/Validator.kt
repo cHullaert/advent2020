@@ -1,6 +1,6 @@
 package com.kaizoku.advent.application.d02
 
-import java.io.File
+import com.kaizoku.advent.application.core.Puzzle
 
 class Validator {
 
@@ -29,9 +29,12 @@ class Validator {
 }
 
 fun main() {
-    val passwords= File("C:\\Users\\Christof\\Documents\\development\\cover\\2020\\advent\\resources\\02.txt")
-        .readLines()
-    val validator = Validator()
-    println(passwords.filter { validator.isValid(it) }.count())
-    println(passwords.filter { validator.isValid2(it) }.count())
+    Puzzle("02",
+        {
+            it.fileData.filter { password -> Validator().isValid(password) }.count()
+        },
+        {
+            it.fileData.filter { password -> Validator().isValid2(password) }.count()
+        }
+    ).play()
 }

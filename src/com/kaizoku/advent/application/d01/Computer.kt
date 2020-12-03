@@ -1,20 +1,21 @@
 package com.kaizoku.advent.application.d01
 
+import com.kaizoku.advent.application.core.Puzzle
 import com.kaizoku.advent.application.extensions.head
+import com.kaizoku.advent.application.extensions.numbers
 import com.kaizoku.advent.application.extensions.tail
-import java.io.File
-
 
 class Computer {
 
     private fun compute(head: Int, tail: List<Int>, expected: Int): Int {
         val numbers=tail.filter { head + it == expected }
-        return if(numbers.isNotEmpty()) {
-            numbers.first()*head
-        } else if(tail.isNotEmpty())
-            this.compute(tail.head, tail.tail, expected)
-        else
-            -1
+        return when {
+            numbers.isNotEmpty() -> {
+                numbers.first()*head
+            }
+            tail.isNotEmpty() -> this.compute(tail.head, tail.tail, expected)
+            else -> -1
+        }
     }
 
     private fun compute2(numbers: List<Int>, expected: Int): Int {
@@ -48,10 +49,12 @@ class Computer {
 }
 
 fun main() {
-    val numbers=File("C:\\Users\\Christof\\Documents\\development\\cover\\2020\\advent\\resources\\01.txt")
-        .readLines().map { it.toInt() }
-    val computer = Computer()
-    println(computer.compute(numbers))
-    println(computer.compute3(numbers))
+    Puzzle("01",
+        {
+            Computer().compute(it.numbers)
+        }, {
+            Computer().compute3(it.numbers)
+        }
+    ).play()
 
 }

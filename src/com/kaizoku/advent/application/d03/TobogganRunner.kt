@@ -1,9 +1,8 @@
 package com.kaizoku.advent.application.d03
 
-import com.kaizoku.advent.application.d01.Computer
+import com.kaizoku.advent.application.core.Puzzle
 import com.kaizoku.advent.application.extensions.head
 import com.kaizoku.advent.application.extensions.tail
-import java.io.File
 
 class TobogganRunner {
     private fun slide(head: String, maps: List<String>, index: Int, offset: Int): Long {
@@ -27,17 +26,16 @@ class TobogganRunner {
 
 
 fun main() {
-    val maps= File("C:\\Users\\Christof\\Documents\\development\\cover\\2020\\advent\\resources\\03.txt")
-        .readLines()
-    val tobogganRunner = TobogganRunner()
-    println(tobogganRunner.slide(maps))
-
-    val trees=listOf(tobogganRunner.slide(maps, 1, 1),
-        tobogganRunner.slide(maps, 3, 1),
-        tobogganRunner.slide(maps, 5, 1),
-        tobogganRunner.slide(maps, 7, 1),
-        tobogganRunner.slide(maps, 1, 2)
-    )
-    println(trees)
-    println(trees.reduce { acc, i ->  acc * i })
+    Puzzle(
+        "03",
+        {
+            TobogganRunner().slide(it.fileData)
+        },
+        {
+            listOf(Pair(1, 1), Pair(3, 1), Pair(5, 1), Pair(7, 1), Pair(1, 2))
+                .map {
+                    pair -> TobogganRunner().slide(it.fileData, pair.first, pair.second)
+                }.reduce { acc, i ->  acc * i }
+        }
+    ).play()
 }
