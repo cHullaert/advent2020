@@ -47,14 +47,3 @@ class Computer {
         return compute3(numbers.head, numbers.tail)
     }
 }
-
-fun main() {
-    Puzzle("01",
-        {
-            Computer().compute(it.numbers)
-        }, {
-            Computer().compute3(it.numbers)
-        }
-    ).play()
-
-}

@@ -2,7 +2,7 @@ package com.kaizoku.advent.application.core
 
 import java.io.File
 
-class Puzzle(private val inputFile: String,
+open class Puzzle(private val inputFile: String,
              val step1: (puzzle: Puzzle)->Any,
              val step2: (puzzle: Puzzle)->Any) {
 
@@ -14,8 +14,7 @@ class Puzzle(private val inputFile: String,
         file.readLines()
     }
 
-    fun play() {
-        println("step 1: "+this.step1(this))
-        println("step 2: "+this.step2(this))
+    fun play(): Pair<String, String> {
+        return Pair(this.step1(this).toString(), this.step2(this).toString())
     }
 }

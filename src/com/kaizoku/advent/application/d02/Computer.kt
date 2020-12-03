@@ -2,7 +2,7 @@ package com.kaizoku.advent.application.d02
 
 import com.kaizoku.advent.application.core.Puzzle
 
-class Validator {
+class Computer {
 
     private fun destructed(password: String): MatchResult.Destructured {
         val regex=Regex("([0-9]+)-([0-9]+) ([a-z]): ([a-z]+)")
@@ -11,13 +11,13 @@ class Validator {
         return value!!.destructured
     }
 
-    fun isValid2(password: String): Boolean {
+    fun compute2(password: String): Boolean {
         val (pos1, pos2, letter, word) = destructed(password)
 
         return (word[pos1.toInt()-1]==letter.first()) xor (word[pos2.toInt()-1]==letter.first())
     }
 
-    fun isValid(password: String): Boolean {
+    fun compute(password: String): Boolean {
         val (min, max, letter, word) = destructed(password)
 
         val list = word.groupBy { it }.filter { it.key == letter.first() }.map { it.value }.firstOrNull()
@@ -26,15 +26,4 @@ class Validator {
 
         return min.toInt()==0
     }
-}
-
-fun main() {
-    Puzzle("02",
-        {
-            it.fileData.filter { password -> Validator().isValid(password) }.count()
-        },
-        {
-            it.fileData.filter { password -> Validator().isValid2(password) }.count()
-        }
-    ).play()
 }
