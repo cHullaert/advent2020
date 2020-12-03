@@ -26,5 +26,6 @@ internal class ComputerTest: PuzzleTest() {
     @Test
     fun puzzle() {
         this.checkPuzzle(D2Puzzle(), Pair("622", "263"))
+        this.checkPuzzle(D2PuzzleConcurrent(), Pair("622", "263"))
     }
 }

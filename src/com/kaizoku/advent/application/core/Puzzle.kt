@@ -2,7 +2,7 @@ package com.kaizoku.advent.application.core
 
 import java.io.File
 
-open class Puzzle(private val inputFile: String,
+abstract class Puzzle(private val inputFile: String,
              val step1: (puzzle: Puzzle)->Any,
              val step2: (puzzle: Puzzle)->Any) {
 

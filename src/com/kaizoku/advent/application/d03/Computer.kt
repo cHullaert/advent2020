@@ -4,8 +4,12 @@ import com.kaizoku.advent.application.extensions.head
 import com.kaizoku.advent.application.extensions.tail
 
 class Computer {
+    fun compute(head: String, index: Int): Long {
+        return if (head[index % head.length]=='#') 1L else 0L
+    }
+
     private fun compute(head: String, maps: List<String>, index: Int, offset: Int): Long {
-        val tree=if (head[index % head.length]=='#') 1L else 0L
+        val tree=compute(head, index)
 
         return if(maps.isNotEmpty()) {
             compute(maps.head, maps.tail, index+offset, offset) + tree

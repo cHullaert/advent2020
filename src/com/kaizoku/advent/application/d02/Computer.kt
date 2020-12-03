@@ -1,7 +1,5 @@
 package com.kaizoku.advent.application.d02
 
-import com.kaizoku.advent.application.core.Puzzle
-
 class Computer {
 
     private fun destructed(password: String): MatchResult.Destructured {

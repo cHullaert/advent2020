@@ -4,7 +4,7 @@ import com.kaizoku.advent.application.core.PuzzleTest
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
-class ComputerTest: PuzzleTest() {
+internal class ComputerTest: PuzzleTest() {
 
     @Test
     fun validateTreeCount() {
@@ -57,5 +57,6 @@ class ComputerTest: PuzzleTest() {
     @Test
     fun puzzle() {
         this.checkPuzzle(D3Puzzle(), Pair("159", "6419669520"))
+        this.checkPuzzle(D3PuzzleConcurrent(), Pair("159", "6419669520"))
     }
 }

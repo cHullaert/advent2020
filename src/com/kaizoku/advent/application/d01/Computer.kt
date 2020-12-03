@@ -1,8 +1,6 @@
 package com.kaizoku.advent.application.d01
 
-import com.kaizoku.advent.application.core.Puzzle
 import com.kaizoku.advent.application.extensions.head
-import com.kaizoku.advent.application.extensions.numbers
 import com.kaizoku.advent.application.extensions.tail
 
 class Computer {
