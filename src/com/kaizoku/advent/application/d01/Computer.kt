@@ -1,12 +1,9 @@
 package com.kaizoku.advent.application.d01
 
+import com.kaizoku.advent.application.extensions.head
+import com.kaizoku.advent.application.extensions.tail
 import java.io.File
 
-val <T> List<T>.tail: List<T>
-    get() = drop(1)
-
-val <T> List<T>.head: T
-    get() = first()
 
 class Computer {
 
