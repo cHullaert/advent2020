@@ -4,7 +4,9 @@ import com.kaizoku.advent.application.core.Puzzle
 
 class D5Puzzle: Puzzle("05",
     {
-        Computer()
+        Computer().compute(it.fileData)
     },
     {
-    })
+        Computer().compute2(it.fileData)
+    }
+)
