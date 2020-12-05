@@ -16,6 +16,28 @@ val <T> List<T>.head: T
 val Puzzle.numbers: List<Int>
     get() = this.fileData.map { number -> number.toInt() }
 
+fun <T> List<T>.indexesOf(predicate: (value: T) -> Boolean): List<Int> {
+    return this.mapIndexed {
+        index, value -> if(predicate(value)) index else -1
+    }.filter {
+        it != -1
+    }
+}
+
+fun <T> List<T>.splitBy(predicate: (value: T) -> Boolean): List<List<T>> {
+    var current = 0
+    return this.map {
+        value -> if(!predicate(value)) Pair(value, current) else {
+            current++
+            Pair(value, -1)
+        }
+    }.filter {
+        it.second != -1
+    }.groupBy({it.second}, {it.first})
+            .values.toList()
+}
+
+
 fun <T, R> Iterable<T>.pmap(
     numThreads: Int = Runtime.getRuntime().availableProcessors() - 2,
     exec: ExecutorService = Executors.newFixedThreadPool(numThreads),
