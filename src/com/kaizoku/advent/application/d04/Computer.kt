@@ -4,7 +4,6 @@ import com.kaizoku.advent.application.extensions.splitBy
 
 class Computer {
     private fun getPassports(list: List<String>): List<Map<String, String>> {
-        println(list)
         return list.splitBy { it.isBlank() }.map { getPassport(it) }
     }
 
