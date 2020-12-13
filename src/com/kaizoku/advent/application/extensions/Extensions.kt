@@ -16,6 +16,18 @@ val <T> List<T>.head: T
 val Puzzle.numbers: List<Int>
     get() = this.fileData.map { number -> number.toInt() }
 
+fun List<Int>.mul(): Int {
+    return this.fold(1) {acc, v -> acc*v }
+}
+
+fun List<Long>.mul(): Long {
+    return this.fold(1L) {acc, v -> acc*v }
+}
+
+fun <T, R> T.transform(transformer: (T) -> R): R {
+    return transformer(this)
+}
+
 fun <T> List<T>.indexesOf(predicate: (value: T) -> Boolean): List<Int> {
     return this.mapIndexed {
         index, value -> if(predicate(value)) index else -1

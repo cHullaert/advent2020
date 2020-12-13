@@ -1,0 +1,13 @@
+package com.kaizoku.advent.application.y#YEAR#.d#DAY#
+
+import com.kaizoku.advent.application.core.Puzzle
+
+class #PUZZLE#: Puzzle(
+        "#YEAR#","#DAY#",
+    {
+        Computer().compute(it.fileData)
+    },
+    {
+        Computer().compute2(it.fileData)
+    }
+)

@@ -1,0 +1,13 @@
+package com.kaizoku.advent.application.y#YEAR#.d#DAY#
+
+class Computer {
+
+    fun compute(data: List<String>): Int {
+        return 0
+    }
+
+    fun compute2(data: List<String>): Int {
+        return 0
+    }
+
+}
